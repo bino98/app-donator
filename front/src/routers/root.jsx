@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
@@ -9,6 +10,11 @@ import {
 } from 'react-router-dom'
 
 class RootContainer extends Component {
+
+  static childContextTypes = {
+    token: PropTypes.string,
+  }
+
   render() {
     return (
       <Router>
