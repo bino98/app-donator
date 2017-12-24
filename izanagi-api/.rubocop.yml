@@ -1,0 +1,93 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - db/**/*
+    - bin/**/*
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+
+Rails:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/LineLength:
+  Max: 128
+  Exclude:
+    - spec/**/*
+
+Metrics/MethodLength:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+Style/NumericLiterals:
+  MinDigits: 10
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/Lambda:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/MultilineIfModifier:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '()'
+    '%w': '()'
+    '%': '{}'
+
+Rails/FilePath:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Layout/EmptyLinesAroundExceptionHandlingKeywords:
+  Enabled: false
+
+Style/YodaCondition:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Lint/RescueWithoutErrorClass:
+  Enabled: false
