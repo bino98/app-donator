@@ -113,3 +113,7 @@ bower.json
 .byebug_history
 
 # End of https://www.gitignore.io/api/rails,intellij
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
