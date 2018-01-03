@@ -9,6 +9,8 @@ import {
   Route,
 } from 'react-router-dom'
 
+import RepositorySearchComponent from 'components/repository/search'
+
 class RootContainer extends Component {
 
   static childContextTypes = {
@@ -18,7 +20,7 @@ class RootContainer extends Component {
   render() {
     return (
       <Router>
-        <div>hoge</div>
+        <RepositorySearchComponent />
       </Router>
     )
   }

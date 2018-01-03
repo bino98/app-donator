@@ -12,7 +12,15 @@ export default {
         test: /\.jsx$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      }
+      },
+      {
+        test: /\.less$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      },
     ]
   },
   resolve: {
