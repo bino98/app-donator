@@ -11,7 +11,6 @@ const toGetQuery = (opts) => {
 }
 
 export const searchRepository = async (opts) => {
-  console.log(toGetQuery(opts))
   const res = await axios.get(GITHUB_HOST + `/search/repositories?${toGetQuery(opts)}`)
   if (res.status == 200) { return res.data }
   return []

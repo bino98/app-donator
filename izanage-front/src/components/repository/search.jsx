@@ -9,6 +9,8 @@ import { searchRepository } from 'utils/github'
 
 type State = {
   items: Array<RepoDetail>,
+  text: any,
+  timer: any,
 }
 
 type RepoDetail = {
@@ -16,26 +18,34 @@ type RepoDetail = {
   url: string,
 }
 
+const WAIT_INTERVAL = 500
+
 export default class RepositorySearchComponent extends Component <_, State> {
 
   static childContextTypes = {
     token: PropTypes.string,
   }
-
+  
   state: State = {
     items: [],
   }
 
-  searchOnChange(value) {
-    timeout(1000)
-    searchRepository({ q: value.target.value }).then(data => {
+  handleOnChange(value) {
+    clearTimeout(this.state.timer)
+    const timer = setTimeout(() => this.searchOnChange(), WAIT_INTERVAL);
+    this.setState({ text: value.target.value, timer })
+  }
+
+  searchOnChange() {
+    const { text } = this.state
+    if(text === '') { return }
+    searchRepository({ q: text }).then(data => {
       this.setState({ items: data.items })
     })
   }
 
   itemsRender() {
     return this.state.items.map((item: RepoDetail) => {
-      console.log(item)
       return (<RepositoryDetailComponent { ...item } />)
     })
   }
@@ -43,7 +53,7 @@ export default class RepositorySearchComponent extends Component <_, State> {
   render() {
     return (
       <div>
-        <Input onChange={value => this.searchOnChange(value)} />
+        <Input onChange={value => this.handleOnChange(value)} />
         { this.itemsRender() }
       </div>
     )
