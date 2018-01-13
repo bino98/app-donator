@@ -14,6 +14,14 @@ export default {
         loader: 'babel-loader'
       },
       {
+        test: /\.scss$/,
+        loaders: [
+          'style-loader',
+          'css-loader?modules',
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.less$/,
         loaders: [
           'style-loader',

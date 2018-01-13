@@ -2,16 +2,18 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
 } from 'react-router-dom'
+import createBrowserHistory from 'history/createBrowserHistory'
 
+import { LayoutComponent } from 'components/common/layout'
 import RepositorySearchComponent from 'components/repository/search'
 
-class RootContainer extends Component {
+const history = createBrowserHistory()
+
+export default class RootContainer extends Component {
 
   static childContextTypes = {
     token: PropTypes.string,
@@ -19,15 +21,11 @@ class RootContainer extends Component {
 
   render() {
     return (
-      <Router>
-        <RepositorySearchComponent />
-      </Router>
+      <BrowserRouter history={history}>
+        <LayoutComponent>
+          <Route path="/search" component={RepositorySearchComponent}/>
+        </LayoutComponent>
+      </BrowserRouter>
     )
   }
 }
-
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)
